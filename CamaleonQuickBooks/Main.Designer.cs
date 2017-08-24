@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.createCVSButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.mainDataGridView = new System.Windows.Forms.DataGridView();
+            this.timerActivityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -43,9 +45,16 @@
             this.openCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previewButton = new System.Windows.Forms.Button();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.durationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billingStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timerActivityBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,12 +130,25 @@
             // 
             // mainDataGridView
             // 
+            this.mainDataGridView.AutoGenerateColumns = false;
             this.mainDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mainDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dateDataGridViewTextBoxColumn,
+            this.jobDataGridViewTextBoxColumn,
+            this.empDataGridViewTextBoxColumn,
+            this.durationDataGridViewTextBoxColumn,
+            this.noteDataGridViewTextBoxColumn,
+            this.billingStatusDataGridViewTextBoxColumn});
+            this.mainDataGridView.DataSource = this.timerActivityBindingSource;
             this.mainDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDataGridView.Location = new System.Drawing.Point(3, 16);
             this.mainDataGridView.Name = "mainDataGridView";
             this.mainDataGridView.Size = new System.Drawing.Size(857, 438);
             this.mainDataGridView.TabIndex = 0;
+            // 
+            // timerActivityBindingSource
+            // 
+            this.timerActivityBindingSource.DataSource = typeof(CamaleonQuickBooks.TimerActivity);
             // 
             // typeComboBox
             // 
@@ -192,6 +214,42 @@
             this.previewButton.UseVisualStyleBackColor = true;
             this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
             // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
+            // jobDataGridViewTextBoxColumn
+            // 
+            this.jobDataGridViewTextBoxColumn.DataPropertyName = "Job";
+            this.jobDataGridViewTextBoxColumn.HeaderText = "Job";
+            this.jobDataGridViewTextBoxColumn.Name = "jobDataGridViewTextBoxColumn";
+            // 
+            // empDataGridViewTextBoxColumn
+            // 
+            this.empDataGridViewTextBoxColumn.DataPropertyName = "Emp";
+            this.empDataGridViewTextBoxColumn.HeaderText = "Emp";
+            this.empDataGridViewTextBoxColumn.Name = "empDataGridViewTextBoxColumn";
+            // 
+            // durationDataGridViewTextBoxColumn
+            // 
+            this.durationDataGridViewTextBoxColumn.DataPropertyName = "Duration";
+            this.durationDataGridViewTextBoxColumn.HeaderText = "Duration";
+            this.durationDataGridViewTextBoxColumn.Name = "durationDataGridViewTextBoxColumn";
+            // 
+            // noteDataGridViewTextBoxColumn
+            // 
+            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
+            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
+            // 
+            // billingStatusDataGridViewTextBoxColumn
+            // 
+            this.billingStatusDataGridViewTextBoxColumn.DataPropertyName = "BillingStatus";
+            this.billingStatusDataGridViewTextBoxColumn.HeaderText = "BillingStatus";
+            this.billingStatusDataGridViewTextBoxColumn.Name = "billingStatusDataGridViewTextBoxColumn";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,10 +265,12 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "Camaleon to Quickbooks";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timerActivityBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -235,6 +295,13 @@
         private System.Windows.Forms.ToolStripMenuItem openCompanyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button previewButton;
+        private System.Windows.Forms.BindingSource timerActivityBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn durationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn billingStatusDataGridViewTextBoxColumn;
     }
 }
 
